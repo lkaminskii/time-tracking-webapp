@@ -390,15 +390,7 @@ small {
     text-transform: uppercase;
 }
 
-.clock-in-section {
-    text-align: center;
-    margin: 3rem 0;
-    padding: 3rem;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    border-radius: var(--radius-xl);
-    color: white;
-    box-shadow: var(--shadow-lg);
-}
+
 
 .clock-in-section h2 {
     color: white;
@@ -931,8 +923,13 @@ small {
     }
 
     .user-info {
-        flex-direction: column;
-        gap: 0.5rem;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 20px;
+        padding: 0.75rem; 
+        background: white;
+        border: 1px solid var(--gray-200);
     }
 
     .btn-large {
@@ -967,6 +964,14 @@ small {
         width: 100%;
         margin-bottom: 0.25rem;
     }
+
+    .location-config {
+        border-radius: 10px !important;
+        width: 100% !important;
+        background: var(--gray-50) !important;
+        padding: 0.25rem !important;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -1140,7 +1145,7 @@ a:hover {
     text-align: center;
     margin: 2rem 0 1rem 0;
     padding: 1rem;
-    background: transparent;
+    background: transparent !important;
     box-shadow: none;
 }
 
