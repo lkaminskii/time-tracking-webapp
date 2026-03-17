@@ -3,6 +3,7 @@ package dev.lucas.time_tracking.security;
 import dev.lucas.time_tracking.model.Employee;
 import dev.lucas.time_tracking.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@NullMarked
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final EmployeeRepository employeeRepository;

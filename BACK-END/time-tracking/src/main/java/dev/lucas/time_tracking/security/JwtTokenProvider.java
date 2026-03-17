@@ -18,13 +18,29 @@ public class JwtTokenProvider {
     private String jwtSecret;
 
     @Value("${jwt.expiration}")
-    private int jwtExpiration;
+    private Long jwtExpiration;
 
     private Key key() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
     public String generateToken(Authentication authentication, boolean rememberMe) {
+        if (authentication == null) {
+            log.error("Authentication object is null");
+            throw new IllegalArgumentException("Authentication cannot be null");
+        }
+
+        Object principal = authentication.getPrincipal();
+        if (principal == null) {
+            log.error("Authentication principal is null");
+            throw new IllegalStateException("Authentication principal cannot be null");
+        }
+
+        if (!(principal instanceof UserPrincipal)) {
+            log.error("Unexpected principal type: {}", principal.getClass().getName());
+            throw new IllegalStateException("Unexpected principal type");
+        }
+
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
         Date now = new Date();
@@ -53,7 +69,7 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder().setSigningKey(key()).build().parse(token);
+            Jwts.parserBuilder().setSigningKey(key()).build().parseClaimsJwt(token);
             return true;
         } catch (MalformedJwtException ex) {
             log.error("Invalid JWT token");

@@ -76,16 +76,16 @@ public class TimeRecordServiceImpl implements TimeRecordService {
         }
     }
 
-    private TimeRecordResponse mapToResponse(TimeRecord record) {
+    private TimeRecordResponse mapToResponse(TimeRecord timeRecord) {
         return TimeRecordResponse.builder()
-                .id(record.getId())
-                .employeeName(record.getEmployeeName())
-                .employeePis(record.getEmployeePis())
-                .companyName(record.getCompanyName())
-                .companyCnpj(record.getCompanyCnpj())
-                .recordDate(record.getRecordDate())
-                .recordTime(record.getRecordTime())
-                .dayOfWeek(record.getDayOfWeek())
+                .id(timeRecord.getId())
+                .employeeName(timeRecord.getEmployeeName())
+                .employeePis(timeRecord.getEmployeePis())
+                .companyName(timeRecord.getCompanyName())
+                .companyCnpj(timeRecord.getCompanyCnpj())
+                .recordDate(timeRecord.getRecordDate())
+                .recordTime(timeRecord.getRecordTime())
+                .dayOfWeek(timeRecord.getDayOfWeek())
                 .build();
     }
 }

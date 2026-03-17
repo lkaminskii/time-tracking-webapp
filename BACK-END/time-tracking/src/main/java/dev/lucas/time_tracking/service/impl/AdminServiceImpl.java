@@ -29,7 +29,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -156,7 +155,7 @@ public class AdminServiceImpl implements AdminService {
 
         List<EmployeeResponse> employeeResponses = employeesPage.getContent().stream()
                 .map(this::mapToEmployeeResponse)
-                .collect(Collectors.toList());
+                .toList();
 
         return new PageImpl<>(employeeResponses, pageable, employeesPage.getTotalElements());
     }
@@ -169,7 +168,7 @@ public class AdminServiceImpl implements AdminService {
 
         List<TimeRecordResponse> recordResponses = recordsPage.getContent().stream()
                 .map(this::mapToTimeRecordResponse)
-                .collect(Collectors.toList());
+                .toList();
 
         return new PageImpl<>(recordResponses, pageable, recordsPage.getTotalElements());
     }
@@ -199,7 +198,7 @@ public class AdminServiceImpl implements AdminService {
         long totalEmployees = employeeRepository.count();
 
         LocalDate today = LocalDate.now();
-        LocalDate startOfWeek = today.minusDays(today.getDayOfWeek().getValue() - 1);
+        LocalDate startOfWeek = today.minusDays((long) today.getDayOfWeek().getValue() - 1);
         LocalDate startOfMonth = today.withDayOfMonth(1);
 
         long totalTimeRecordsToday = timeRecordRepository.countByRecordDate(today);
@@ -231,7 +230,7 @@ public class AdminServiceImpl implements AdminService {
 
         return recentRecords.getContent().stream()
                 .map(this::mapToTimeRecordResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private EmployeeResponse mapToEmployeeResponse(Employee employee) {
@@ -251,16 +250,16 @@ public class AdminServiceImpl implements AdminService {
                 .build();
     }
 
-    private TimeRecordResponse mapToTimeRecordResponse(TimeRecord record) {
+    private TimeRecordResponse mapToTimeRecordResponse(TimeRecord timeRecord) {
         return TimeRecordResponse.builder()
-                .id(record.getId())
-                .employeeName(record.getEmployeeName())
-                .employeePis(record.getEmployeePis())
-                .companyName(record.getCompanyName())
-                .companyCnpj(record.getCompanyCnpj())
-                .recordDate(record.getRecordDate())
-                .recordTime(record.getRecordTime())
-                .dayOfWeek(record.getDayOfWeek())
+                .id(timeRecord.getId())
+                .employeeName(timeRecord.getEmployeeName())
+                .employeePis(timeRecord.getEmployeePis())
+                .companyName(timeRecord.getCompanyName())
+                .companyCnpj(timeRecord.getCompanyCnpj())
+                .recordDate(timeRecord.getRecordDate())
+                .recordTime(timeRecord.getRecordTime())
+                .dayOfWeek(timeRecord.getDayOfWeek())
                 .build();
     }
 }
