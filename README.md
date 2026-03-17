@@ -1,25 +1,6 @@
 # 🕐 Sistema de Registro de Ponto
 
-Uma plataforma web corporativa robusta e intuitiva para gerenciamento eficiente do registro de ponto de funcionários.
-
-## 📋 Índice
-
-- [Visão Geral](#visão-geral)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Arquitetura](#arquitetura)
-- [Funcionalidades](#funcionalidades)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Requisitos do Sistema](#requisitos-do-sistema)
-- [Instalação e Configuração](#instalação-e-configuração)
-- [Variáveis de Ambiente](#variáveis-de-ambiente)
-- [Executando o Projeto](#executando-o-projeto)
-- [Modelos de Dados](#modelos-de-dados)
-- [API Endpoints](#api-endpoints)
-- [Autenticação e Segurança](#autenticação-e-segurança)
-- [Como Usar](#como-usar)
-- [Testes](#testes)
-- [Contribuindo](#contribuindo)
-- [Licença](#licença)
+Uma plataforma web corporativa intuitiva para gerenciamento eficiente do registro de ponto de funcionários.
 
 ---
 
